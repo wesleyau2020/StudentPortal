@@ -11,7 +11,7 @@ function fetchStudentInfo() {
     .then((response) => response.json())
     .then((data) => {
       // Assuming the API returns an object with student information
-      displayStudentInfo(data);
+      displayStudentInfo(data[0]);
     })
     .catch((error) => {
       console.error("Error fetching student information:", error);
@@ -22,5 +22,5 @@ function displayStudentInfo(student) {
   // Update the HTML elements with the student's information
   document.getElementById("name").textContent = student.name;
   document.getElementById("email").textContent = student.email;
-  document.getElementById("dob").textContent = student.dateOfBirth;
+  document.getElementById("dob").textContent = student.dob;
 }
