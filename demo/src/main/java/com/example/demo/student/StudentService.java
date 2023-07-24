@@ -24,6 +24,7 @@ public class StudentService {
 
     public Student addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+
         if (studentOptional.isPresent()) {
             throw new IllegalStateException("Email: " + student.getEmail() + " already exists");
         }
