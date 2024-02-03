@@ -1,3 +1,3 @@
-# Learn SpringBoot
+# Student Portal
 
-Simple CRUD application to learn Spring Boot
+A simple Spring Boot application with CRUD operations.
