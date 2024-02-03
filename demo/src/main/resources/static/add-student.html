@@ -8,9 +8,11 @@
       body {
         margin: 20px;
         text-align: center;
+        font-family: Arial, sans-serif;
       }
 
       h2 {
+        text-align: center;
         color: #3498db;
       }
 
@@ -45,8 +47,16 @@
         border-radius: 4px;
       }
 
+      button.cancel {
+        background-color: #e74c3c;
+      }
+
       button:hover {
         background-color: #27ae60;
+      }
+
+      button.cancel:hover {
+        background-color: #c0392b;
       }
     </style>
   </head>
@@ -64,13 +74,13 @@
       <input type="date" id="dob" name="dob" required />
 
       <button type="button" onclick="addStudent()">Add Student</button>
+      <button type="button" class="cancel" onclick="cancelAddStudent()">
+        Cancel
+      </button>
     </form>
 
     <script>
       function addStudent() {
-        // Implement logic to send the student data to the backend and handle the response
-        // You can use the fetch API or any other method to send the data to your backend
-        // For simplicity, this example only logs the student data to the console
         const formData = new FormData(
           document.getElementById("addStudentForm")
         );
@@ -80,10 +90,6 @@
           studentData[key] = value;
         });
         console.log("Student data to be sent to the backend:", studentData);
-
-        // const name = formData.get(name);
-        // const email = formData.get(email);
-        // const dob = formData.get(dob);
 
         // Call the backend API to add the student
         fetch("http://localhost:8080/api/v1/student", {
@@ -96,13 +102,19 @@
           .then((response) => {
             if (response.ok) {
               console.log("Student added successfully");
-              // Redirect to the student list page or perform any other action
+              // // Redirect to the "index.html" page
               window.location.href = "index.html";
             } else {
               throw new Error("Failed to add student");
             }
           })
           .catch((error) => console.error("Error adding student:", error));
+      }
+
+      // Function to cancel and go back to index.html
+      function cancelAddStudent() {
+        // Redirect to the "index.html" page
+        window.location.href = "index.html";
       }
     </script>
   </body>

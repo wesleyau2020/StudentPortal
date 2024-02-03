@@ -59,11 +59,11 @@ body {
   background-color: #2ecc71;
   color: white;
   border: none;
-  padding: 8px 12px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 4px;
   position: fixed;
-  right: 145px;
+  right: 45%;
 }
 
 .add-btn:hover {
