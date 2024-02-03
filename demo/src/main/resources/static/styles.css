@@ -55,7 +55,7 @@ body {
   margin-left: 5px;
 }
 
-button {
+.add-btn {
   background-color: #2ecc71;
   color: white;
   border: none;
@@ -63,10 +63,9 @@ button {
   cursor: pointer;
   border-radius: 4px;
   position: fixed;
-  top: 20px;
-  right: 20px;
+  right: 145px;
 }
 
-button:hover {
+.add-btn:hover {
   background-color: #27ae60;
 }
