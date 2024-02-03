@@ -22,6 +22,16 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+    public Student getStudent(Long studentId) {
+        Optional<Student> studentOptional = studentRepository.findById(studentId);
+
+        if (!studentOptional.isPresent()) {
+            throw new IllegalStateException("studentId: " + studentId + " does not exists");
+        }
+
+        return studentRepository.findById(studentId).orElse(null);
+    }
+
     public Student addNewStudent(Student student) {
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
 
@@ -43,7 +53,7 @@ public class StudentService {
     }
 
     @Transactional
-    public void updateStudent(Long studentId, String name, String email) {
+    public Student updateStudent(Long studentId, String name, String email) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalStateException("studentId: " + studentId + " does not exist"));
 
@@ -58,5 +68,7 @@ public class StudentService {
             }
             student.setEmail(email);
         }
+
+        return student;
     }
 }
