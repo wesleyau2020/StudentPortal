@@ -46,7 +46,7 @@ window.editStudent = function (studentId) {
       const updatedName = prompt("Enter updated name:", existingStudent.name);
       const updatedEmail = prompt("Enter updated name:", existingStudent.email);
 
-      // Create an object with the updated data
+      // // Create an object with the updated data
       // const updatedStudent = {
       //   name: updatedName,
       //   email: updatedEmail,
@@ -55,6 +55,7 @@ window.editStudent = function (studentId) {
       // Perform the PUT request to update the student
       fetch(
         `${apiUrl}/${studentId}?name=${updatedName}&email=${updatedEmail}`,
+        // `${apiUrl}/${studentId}`,
         {
           method: "PUT",
           headers: {
