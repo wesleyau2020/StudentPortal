@@ -47,22 +47,19 @@ window.editStudent = function (studentId) {
       const updatedEmail = prompt("Enter updated name:", existingStudent.email);
 
       // Create an object with the updated data
-      // const updatedStudent = {
-      //   name: updatedName,
-      //   email: updatedEmail,
-      // };
+      const updatedStudent = {
+        name: updatedName,
+        email: updatedEmail,
+      };
 
       // Perform the PUT request to update the student
-      fetch(
-        `${apiUrl}/${studentId}?name=${updatedName}&email=${updatedEmail}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // body: JSON.stringify(updatedStudent),
-        }
-      )
+      fetch(`${apiUrl}/${studentId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedStudent),
+      })
         .then((response) => response.json())
         .then((editedStudent) => {
           console.log("Student updated:", editedStudent);

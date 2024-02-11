@@ -18,7 +18,7 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudents() {
+    public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
@@ -53,19 +53,26 @@ public class StudentService {
     }
 
     @Transactional
-    public Student updateStudent(Long studentId, String name, String email) {
+    public Student updateStudent(Long studentId, Student newStudentDetails) {
         Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new IllegalStateException("studentId: " + studentId + " does not exist"));
+                .orElseThrow(() -> new IllegalStateException("studentId: " + studentId + "does not exist"));
 
-        if (name != null && name.length() > 0 && !Objects.equals(student.getName(), name)) {
+        String name = newStudentDetails.getName();
+        String email = newStudentDetails.getEmail();
+
+        if (name != null && name.length() > 0 &&
+                !Objects.equals(student.getName(), name)) {
             student.setName(name);
         }
 
-        if (email != null && email.length() > 0 && !Objects.equals(student.getEmail(), email)) {
-            Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
-            if (studentOptional.isPresent()) {
-                throw new IllegalStateException("Email: " + student.getEmail() + " already exists");
-            }
+        if (email != null && email.length() > 0 &&
+                !Objects.equals(student.getEmail(), email)) {
+            // Optional<Student> studentOptional =
+            // studentRepository.findStudentByEmail(newStudentDetails.getEmail());
+            // if (studentOptional.isPresent()) {
+            // throw new IllegalStateException("Email: " + newStudentDetails.getEmail() + "
+            // already exists");
+            // }
             student.setEmail(email);
         }
 

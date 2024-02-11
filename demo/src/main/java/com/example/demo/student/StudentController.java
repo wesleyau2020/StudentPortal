@@ -29,7 +29,7 @@ public class StudentController {
 
     @GetMapping
     public List<Student> getAllStudents() {
-        return studentService.getStudents();
+        return studentService.getAllStudents();
     }
 
     @GetMapping(path = "{studentId}")
@@ -45,9 +45,8 @@ public class StudentController {
     @PutMapping(path = "{studentId}")
     public Student updateStudent(
             @PathVariable("studentId") Long studentId,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String email) {
-        return studentService.updateStudent(studentId, name, email);
+            @RequestBody Student student) {
+        return studentService.updateStudent(studentId, student);
     }
 
     @DeleteMapping(path = "{studentId}")
