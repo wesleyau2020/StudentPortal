@@ -50,13 +50,6 @@ public class StudentController {
         return studentService.updateStudent(studentId, name, email);
     }
 
-    // @PutMapping(path = "{studentId}")
-    // public Student updateStudent(
-    // @PathVariable("studentId") Long studentId,
-    // @RequestBody Student student) {
-    // return studentService.updateStudent(studentId, student);
-    // }
-
     @DeleteMapping(path = "{studentId}")
     public void deleteStudent(@PathVariable("studentId") Long id) {
         studentService.deleteStudent(id);
