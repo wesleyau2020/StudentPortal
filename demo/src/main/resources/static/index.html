@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Information</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
   </head>
 
   <body>
     <h2>Student List</h2>
     <div class="student-info">
+      <!-- Student Table -->
       <table id="studentTable">
         <thead>
           <tr>
@@ -19,17 +20,18 @@
             <th>DOB</th>
             <th>Age</th>
             <th>Actions</th>
-            <!-- New column for buttons -->
+            <!-- Actions column for buttons -->
           </tr>
         </thead>
         <tbody>
           <!-- Table body will be filled dynamically using JavaScript -->
         </tbody>
       </table>
+      <!-- Add Button -->
+      <button class="add-btn" onclick="navigateToAddStudentPage()">
+        Add Student
+      </button>
     </div>
-    <button class="add-btn" onclick="navigateToAddStudentPage()">
-      Add Student
-    </button>
-    <script src="script.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
