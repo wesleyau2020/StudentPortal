@@ -22,12 +22,6 @@ public class Student {
     private String email;
     private LocalDate dob;
 
-    // Student scores
-    private int engScore;
-    private int mathScore;
-    private int sciScore;
-    private int chiScore;
-
     @Transient
     private Integer age;
 
@@ -78,38 +72,6 @@ public class Student {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public int getEngScore() {
-        return engScore;
-    }
-
-    public void setEngScore(int engScore) {
-        this.engScore = engScore;
-    }
-
-    public int getMathScore() {
-        return mathScore;
-    }
-
-    public void setMathScore(int mathScore) {
-        this.mathScore = mathScore;
-    }
-
-    public int getSciScore() {
-        return sciScore;
-    }
-
-    public void setSciScore(int sciScore) {
-        this.sciScore = sciScore;
-    }
-
-    public int getChiScore() {
-        return chiScore;
-    }
-
-    public void setChiScore(int chiScore) {
-        this.chiScore = chiScore;
     }
 
     @Override

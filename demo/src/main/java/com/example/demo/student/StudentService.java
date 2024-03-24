@@ -23,9 +23,9 @@ public class StudentService {
     }
 
     public Student getStudent(Long studentId) {
-        Optional<Student> studentOptional = studentRepository.findById(studentId);
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
 
-        if (!studentOptional.isPresent()) {
+        if (!optionalStudent.isPresent()) {
             throw new IllegalStateException("studentId: " + studentId + " does not exists");
         }
 
@@ -33,9 +33,9 @@ public class StudentService {
     }
 
     public Student addNewStudent(Student student) {
-        Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+        Optional<Student> optionalStudent = studentRepository.findStudentByEmail(student.getEmail());
 
-        if (studentOptional.isPresent()) {
+        if (optionalStudent.isPresent()) {
             throw new IllegalStateException("Email: " + student.getEmail() + " already exists");
         }
 
@@ -76,4 +76,5 @@ public class StudentService {
 
         return student;
     }
+
 }
