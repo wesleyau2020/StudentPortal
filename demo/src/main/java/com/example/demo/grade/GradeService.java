@@ -1,7 +1,5 @@
 package com.example.demo.grade;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import com.example.demo.student.Student;
@@ -24,7 +22,7 @@ public class GradeService {
                 .orElseThrow(() -> new IllegalArgumentException("Student not found with ID: " + studentId));
 
         // Retrieve the grades for the student
-        return gradeRepository.findByStudentId(studentId);
+        return gradeRepository.findByStudentId(student.getId());
     }
 
 }
