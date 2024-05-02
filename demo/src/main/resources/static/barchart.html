@@ -6,37 +6,80 @@
     <title>Bar Chart with D3.js</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-      /* Add your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      #studentForm {
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+      }
+
+      button {
+        padding: 8px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      svg {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
-    <svg id="chart" width="400" height="300"></svg>
+    <div id="studentForm">
+      <label for="studentID">Enter Student ID:</label>
+      <input type="text" id="studentID" />
+      <button onclick="fetchData()">Fetch Data</button>
+    </div>
+    <svg id="chart" width="600" height="400"></svg>
 
     <script>
-      // // Sample data (replace with your actual data)
-      // const data = [
-      //   { subject: "Math", score: 85 },
-      //   { subject: "Science", score: 75 },
-      //   { subject: "English", score: 90 },
-      //   { subject: "Chinese", score: 80 },
-      // ];
+      function fetchData() {
+        // Get studentID from user input
+        const studentID = document.getElementById("studentID").value;
 
-      // Fetch data from backend API
-      const apiUrl = "http://localhost:8080/api/v1/grade/35";
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          const processedData = [
-            { subject: "Math", score: data.mathScore },
-            { subject: "Science", score: data.sciScore },
-            { subject: "English", score: data.engScore },
-            { subject: "Chinese", score: data.chiScore },
-          ];
-          renderChart(processedData);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+        // Clear existing chart before rendering new chart
+        d3.select("#chart").selectAll("*").remove();
+
+        // Fetch data from backend API
+        const apiUrl = "http://localhost:8080/api/v1/grade";
+        fetch(`${apiUrl}/${studentID}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const processedData = [
+              { subject: "Math", score: data.mathScore },
+              { subject: "Science", score: data.sciScore },
+              { subject: "English", score: data.engScore },
+              { subject: "Chinese", score: data.chiScore },
+            ];
+            renderChart(processedData);
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }
 
       function renderChart(data) {
         // Define color scale
@@ -47,8 +90,8 @@
 
         // Set up SVG
         const margin = { top: 20, right: 20, bottom: 30, left: 40 };
-        const width = 400 - margin.left - margin.right;
-        const height = 300 - margin.top - margin.bottom;
+        const width = 600 - margin.left - margin.right;
+        const height = 400 - margin.top - margin.bottom;
 
         const svg = d3
           .select("#chart")
