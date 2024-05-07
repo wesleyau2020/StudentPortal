@@ -17,13 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
-
-        private UserDetailsService userDetailsService;
-
-        public SecurityConfig(UserDetailsService userDetailsService) {
-                this.userDetailsService = userDetailsService;
-        }
-
+        @SuppressWarnings("removal")
         @Bean
         public AuthenticationManager authenticationManager(HttpSecurity http,
                         BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailsService)

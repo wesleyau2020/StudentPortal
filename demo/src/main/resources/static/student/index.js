@@ -32,8 +32,7 @@ function fetchStudentInfo() {
 }
 
 function navigateToAddStudentPage() {
-  // Redirect to the "add-student.html" page (replace with the actual page name)
-  window.location.href = "add-student.html";
+  window.location.href = "add.html";
 }
 
 // Function for edit action
