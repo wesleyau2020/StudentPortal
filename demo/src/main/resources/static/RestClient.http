@@ -1,10 +1,12 @@
 GET http://localhost:8080/api/v1/student
 
 ###
-POST http://localhost:8080/api/v1/user
+POST http://localhost:8080/api/v1/student
 Content-Type: application/json
+Authorization: Basic myadmin goodpassword
+
 {
-    "username": "wesleyau12@gmail.com",
-    "password": "password123",
-    "authorities": "ROLE_ADMIN"
+    "name": "New User",
+    "email": "newuser@email.com",
+    "dob": "17-12-2000"
 }
