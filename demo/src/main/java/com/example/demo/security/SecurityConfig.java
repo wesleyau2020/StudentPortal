@@ -35,16 +35,14 @@ public class SecurityConfig {
                                 .authorizeHttpRequests(
                                                 authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                                                                 .requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                                                                .requestMatchers("/admin/**").hasAnyRole("ADMIN")
-                                                                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+                                                                .requestMatchers("/api/v1/student/**")
+                                                                .hasAnyRole("ADMIN")
+                                                                .requestMatchers("/api/v1/users/**")
+                                                                .hasAnyRole("ADMIN")
                                                                 .requestMatchers("/login/**").permitAll()
                                                                 .anyRequest().authenticated())
-                                .httpBasic(Customizer.withDefaults())
                                 .formLogin(Customizer.withDefaults())
-                                .sessionManagement(
-                                                httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer
-                                                                .sessionCreationPolicy(
-                                                                                SessionCreationPolicy.STATELESS));
+                                .httpBasic(Customizer.withDefaults());
 
                 return http.build();
         }
