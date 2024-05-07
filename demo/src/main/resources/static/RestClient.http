@@ -1,4 +1,6 @@
 GET http://localhost:8080/api/v1/student
+Content-Type: application/json
+Authorization: Basic myadmin goodpassword
 
 ###
 POST http://localhost:8080/api/v1/student
@@ -8,5 +10,25 @@ Authorization: Basic myadmin goodpassword
 {
     "name": "New User",
     "email": "newuser@email.com",
-    "dob": "17-12-2000"
+    "dob": "2000-12-12"
+}
+
+###
+DELETE  http://localhost:8080/api/v1/student/40
+Content-Type: application/json
+Authorization: Basic myadmin badpassword
+
+###
+DELETE  http://localhost:8080/api/v1/student/40
+Content-Type: application/json
+Authorization: Basic myadmin goodpassword
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+Authorization: Basic myadmin goodpassword
+
+{
+    "username": "myadmin",
+    "password": "goodpassword",
 }
